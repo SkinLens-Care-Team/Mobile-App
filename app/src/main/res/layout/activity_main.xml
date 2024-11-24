@@ -42,6 +42,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#042628"
         android:src="@drawable/scan_icon"
+        android:id="@+id/fab"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="30dp"
         app:tint="@color/white" />

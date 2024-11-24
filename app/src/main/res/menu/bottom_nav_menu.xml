@@ -8,22 +8,21 @@
         android:title="" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_history"
         android:icon="@drawable/history_selector"
         android:title="" />
 
     <item
-        android:enabled="false"
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_scan"
         android:title="" />
 
     <item
-        android:id="@+id/ddd"
+        android:id="@+id/navigation_konsultasi"
         android:icon="@drawable/konsul_selector"
         android:title="" />
 
     <item
-        android:id="@+id/navigd"
+        android:id="@+id/profile_fragment"
         android:icon="@drawable/profile_selector"
         android:title="" />
 

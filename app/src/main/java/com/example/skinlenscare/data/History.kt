@@ -1,11 +1,7 @@
 package com.example.skinlenscare.data
 
-data class Article(
+data class History(
     val photo: Int,
     val title: String,
-    val description: String,
-    val date: String
+    val tanggal : String
 )
-
-
-

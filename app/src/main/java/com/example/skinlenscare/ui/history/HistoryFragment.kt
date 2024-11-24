@@ -1,37 +1,39 @@
-package com.example.skinlenscare.ui.dashboard
+package com.example.skinlenscare.ui.history
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.skinlenscare.databinding.FragmentDashboardBinding
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.skinlenscare.R
+import com.example.skinlenscare.adapter.HistoryAdapter
+import com.example.skinlenscare.data.History
 
-class DashboardFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_history, container, false)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
-    }
+        // Dummy Data
+        val historyList = listOf(
+            History(R.drawable.skin_lens_banner, "Milia", "12 - May - 2023"),
+            History(R.drawable.skin_lens_banner, "Acne", "15 - May - 2023"),
+            History(R.drawable.skin_lens_banner, "Rosacea", "18 - May - 2023")
+        )
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // Setup RecyclerView
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_history)
+        recyclerView.layoutManager = GridLayoutManager(context, 2) // 2 kolom
+        recyclerView.adapter = HistoryAdapter(historyList)
+
+        return view
     }
 }
