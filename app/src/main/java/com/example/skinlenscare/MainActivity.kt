@@ -2,10 +2,12 @@ package com.example.skinlenscare
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val REQUEST_CODE_GALLERY = 1
+        private const val REQUEST_CODE_CAMERA = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Camera option click listener
         cameraLayout.setOnClickListener {
             dialog.dismiss()
-            Toast.makeText(this, "Pilih Kamera", Toast.LENGTH_SHORT).show()
+            openCamera() // Fungsi untuk membuka kamera
         }
 
         // Gallery option click listener
@@ -92,18 +95,33 @@ class MainActivity : AppCompatActivity() {
 
     // Function to open the gallery
     private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK) // Intent untuk memilih media
-        intent.type = "image/*" // Filter hanya untuk gambar
-        startActivityForResult(intent, REQUEST_CODE_GALLERY) // Mulai aktivitas dengan kode permintaan
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, REQUEST_CODE_GALLERY)
     }
 
-    // Handle the result from gallery
+    // Function to open the camera
+    private fun openCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE) // Intent untuk kamera
+        startActivityForResult(intent, REQUEST_CODE_CAMERA)
+    }
+
+    // Handle the result from gallery or camera
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK) {
-            val selectedImageUri: Uri? = data?.data // Mendapatkan URI gambar yang dipilih
-            Toast.makeText(this, "Gambar dipilih: $selectedImageUri", Toast.LENGTH_SHORT).show()
-            // Anda dapat memproses URI ini (misalnya, menampilkan gambar atau menyimpannya)
+
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_GALLERY -> {
+                    val selectedImageUri: Uri? = data?.data
+                    Toast.makeText(this, "Gambar dipilih: $selectedImageUri", Toast.LENGTH_SHORT).show()
+                }
+                REQUEST_CODE_CAMERA -> {
+                    val photo: Bitmap? = data?.extras?.get("data") as Bitmap? // Mendapatkan bitmap foto
+                    Toast.makeText(this, "Foto diambil dengan kamera", Toast.LENGTH_SHORT).show()
+                    // Anda dapat memproses bitmap ini (misalnya, menyimpannya atau menampilkan di UI)
+                }
+            }
         }
     }
 }
