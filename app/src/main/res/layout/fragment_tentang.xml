@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:paddingTop="20dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTentangContent"
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sofia_pro_reguler"
+        android:text="@string/about_diagnose"
+        android:textColor="#646464"
+        android:lineHeight="20sp"
+        android:textSize="14sp" />
+</ScrollView>

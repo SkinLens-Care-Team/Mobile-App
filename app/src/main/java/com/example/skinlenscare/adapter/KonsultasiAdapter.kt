@@ -16,18 +16,15 @@ class KonsultasiAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(doctor: Doctor) {
             binding.apply {
-                // Set data dokter ke tampilan
                 imgItemPhoto.setImageResource(doctor.photo)
                 tvItemName.text = doctor.name
                 tvItemDescription.text = doctor.description
-
-                // Klik tombol "Message" membuka WhatsApp
                 btnMessage.setOnClickListener {
-                    val phoneNumber = doctor.phoneNumber // Ambil nomor telepon dokter
+                    val phoneNumber = doctor.phoneNumber
                     val intent = Intent(Intent.ACTION_VIEW).apply {
-                        data = Uri.parse("https://wa.me/$phoneNumber") // Format nomor untuk WA
+                        data = Uri.parse("https://wa.me/$phoneNumber")
                     }
-                    itemView.context.startActivity(intent) // Jalankan Intent
+                    itemView.context.startActivity(intent)
                 }
             }
         }

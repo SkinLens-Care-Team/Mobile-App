@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- FrameLayout untuk Gambar Utama -->
     <FrameLayout
         android:id="@+id/frameLayoutImage"
         android:layout_width="match_parent"
@@ -20,8 +18,6 @@
             android:src="@drawable/acne"
             android:scaleType="centerCrop" />
     </FrameLayout>
-
-    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBack"
         android:layout_width="wrap_content"
@@ -40,8 +36,6 @@
         app:maxImageSize="12dp"
         app:shapeAppearanceOverlay="@style/RoundedCorner8"
         app:tint="@null" />
-
-    <!-- FrameLayout untuk Konten Artikel -->
     <FrameLayout
         android:id="@+id/frameLayoutCard"
         android:layout_width="match_parent"
@@ -50,20 +44,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayoutImage">
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewArticle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="0dp"
             app:cardElevation="4dp">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="32dp">
-
-                <!-- Judul Artikel -->
                 <TextView
                     android:id="@+id/tvArticleTitle"
                     android:layout_width="0dp"
@@ -76,8 +66,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- ScrollView untuk Deskripsi -->
                 <ScrollView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -87,7 +75,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:scrollbars="none"
                     app:layout_constraintBottom_toBottomOf="parent">
-
                     <TextView
                         android:id="@+id/tvArticleDescription"
                         android:layout_width="match_parent"

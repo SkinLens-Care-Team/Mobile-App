@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.skinlenscare.AllArticleActivity
 import com.example.skinlenscare.R
 import com.example.skinlenscare.adapter.ArticleAdapter
 import com.example.skinlenscare.data.Article
@@ -28,6 +29,11 @@ class HomeFragment : Fragment(), ArticleAdapter.OnArticleButtonClickListener {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.textView3.setOnClickListener {
+            val intent = Intent(requireContext(), AllArticleActivity::class.java)
+            startActivity(intent)
+        }
+
         setupRecyclerView()
 
         return root
@@ -42,8 +48,6 @@ class HomeFragment : Fragment(), ArticleAdapter.OnArticleButtonClickListener {
             Article(R.drawable.food, "Makanan Berbahaya Untuk Kulit", "Beberapa jenis makanan dapat berdampak buruk pada kesehatan kulit jika dikonsumsi secara berlebihan. Makanan tinggi gula, seperti permen, kue, dan minuman bersoda, dapat memicu lonjakan kadar insulin yang berkontribusi pada peradangan dan produksi minyak berlebih, sehingga memperparah jerawat. Makanan olahan dan cepat saji yang kaya akan lemak jenuh, garam, dan bahan pengawet juga dapat merusak keseimbangan kulit dan meningkatkan risiko peradangan. Produk susu, terutama susu skim, dikaitkan dengan jerawat pada beberapa orang karena kandungan hormon atau protein tertentu yang dapat memengaruhi hormon tubuh. Makanan yang digoreng dan berminyak cenderung meningkatkan produksi sebum, yang dapat menyumbat pori-pori. Selain itu, makanan dengan indeks glikemik tinggi, seperti roti putih, nasi putih, dan keripik, dapat memicu fluktuasi gula darah yang berdampak buruk pada kesehatan kulit. Oleh karena itu, menjaga pola makan seimbang dengan memperbanyak asupan sayur, buah, protein tanpa lemak, dan lemak sehat sangat penting untuk kesehatan kulit yang optimal." ,"12 September 2023"),
             Article(R.drawable.carcinoma, "Kenali Gejala Awal Carcinoma", "Gejala awal karsinoma dapat bervariasi tergantung pada jenisnya, tetapi secara umum, tanda-tanda yang perlu diwaspadai meliputi munculnya benjolan atau area kulit yang tidak biasa. Pada **karsinoma sel basal (basal cell carcinoma)**, gejala sering berupa bintik kecil berwarna merah muda atau benjolan yang mengkilap, terkadang disertai pembuluh darah halus di permukaannya. Gejala lain bisa berupa luka yang tidak kunjung sembuh atau area kulit yang tampak bersisik dan berkerak. Sementara itu, karsinoma sel skuamosa (squamous cell carcinoma) sering ditandai dengan benjolan keras, kasar, atau bersisik yang dapat terasa sakit atau mudah berdarah. Luka atau bercak merah pada kulit yang terus membesar juga bisa menjadi tanda awal. Karsinoma juga dapat berkembang pada kulit yang sering terpapar sinar matahari, seperti wajah, telinga, leher, tangan, atau kaki. Jika Anda mendeteksi perubahan pada kulit seperti luka yang tidak sembuh, perubahan warna kulit, atau benjolan yang tumbuh cepat, sangat penting untuk segera memeriksakannya ke dokter, karena deteksi dini meningkatkan peluang pengobatan yang lebih efektif." ,"12 September 2023")
         )
-
-        // Adapter setup dengan listener
         val adapter = ArticleAdapter(articles, this)
         binding.rvArticle.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -52,14 +56,11 @@ class HomeFragment : Fragment(), ArticleAdapter.OnArticleButtonClickListener {
     }
 
     override fun onArticleButtonClicked(article: Article) {
-        // Intent ke ArticleActivity
         val intent = Intent(requireContext(), ArticleActivity::class.java)
         intent.putExtra("ARTICLE_TITLE", article.title)
         intent.putExtra("ARTICLE_DATE", article.date)
         intent.putExtra("ARTICLE_DESCRIPTION", article.description)
         intent.putExtra("ARTICLE_IMAGE", article.photo)
-
-
         startActivity(intent)
     }
 

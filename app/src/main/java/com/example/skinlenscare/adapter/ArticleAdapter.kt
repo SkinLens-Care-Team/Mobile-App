@@ -11,7 +11,7 @@ import com.example.skinlenscare.data.Article
 
 class ArticleAdapter(
     private val articles: List<Article>,
-    private val listener: OnArticleButtonClickListener
+    private val listener: OnArticleButtonClickListener  // Listener yang akan digunakan
 ) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -23,8 +23,9 @@ class ArticleAdapter(
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = articles[position]
         holder.bind(article)
+        // Menambahkan aksi klik pada item artikel
         holder.itemView.findViewById<View>(R.id.articleButton).setOnClickListener {
-            listener.onArticleButtonClicked(article)
+            listener.onArticleButtonClicked(article)  // Memanggil listener
         }
     }
 
@@ -39,8 +40,8 @@ class ArticleAdapter(
         }
     }
 
-    // Tambahkan interface di sini
+    // Interface untuk menangani klik artikel
     interface OnArticleButtonClickListener {
-        fun onArticleButtonClicked(article: Article)
+        fun onArticleButtonClicked(article: Article)  // Method untuk handle klik artikel
     }
 }

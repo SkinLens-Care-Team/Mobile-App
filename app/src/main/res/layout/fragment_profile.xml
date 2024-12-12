@@ -22,22 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="90dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/arrow_left"
-        app:backgroundTint="#353535"
-        app:elevation="0dp"
-        app:fabCustomSize="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/tvHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:maxImageSize="12dp"
-        app:shapeAppearanceOverlay="@style/RoundedCorner8"
-        app:tint="@null" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewProfile"
@@ -70,7 +55,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/skin_lens_banner"
+                android:src="@drawable/user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

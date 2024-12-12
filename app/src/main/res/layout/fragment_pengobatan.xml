@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:paddingTop="20dp"
+    android:layout_height="match_parent">
+
+    <TextView
+
+        android:id="@+id/tvPengobatanContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pengobatan_diagnosa"
+        android:textColor="#646464"
+        android:fontFamily="@font/sofia_pro_reguler"
+        android:lineHeight="20sp"
+        android:textSize="14sp" />
+</ScrollView>
